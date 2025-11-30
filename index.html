@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MD Concatenator</title>
+  <link rel="stylesheet" href="./style.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <!-- Tab Navigation -->
+      <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="tab-concat">Concatenator</button>
+        <button class="tab-btn" data-tab="tab-repage">Re-pager</button>
+      </nav>
+
+      <!-- Tab Content: Concatenator -->
+      <div id="tab-concat" class="tab-content active">
+        <!-- Left Pane: Input & Ordering -->
+        <div class="pane left-pane">
+          <header>
+            <h1>MD Concatenator</h1>
+            <p>Drag & drop files to reorder</p>
+          </header>
+
+          <div id="drop-zone" class="drop-zone">
+            <p>Drop MD files here or click to select</p>
+            <input type="file" id="file-input" multiple accept=".md,.txt,.markdown" hidden>
+          </div>
+
+          <ul id="file-list" class="file-list">
+            <!-- List items will be injected here -->
+          </ul>
+
+          <div class="actions">
+            <button id="clear-btn" class="btn secondary">Clear All</button>
+            <button id="concat-btn" class="btn primary" disabled>Concatenate Files</button>
+          </div>
+        </div>
+
+        <!-- Right Pane: Output & Logs -->
+        <div class="pane right-pane">
+          <header>
+            <h2>Progress & Output</h2>
+          </header>
+
+          <div class="progress-section">
+            <div class="progress-bar-container">
+              <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <span id="progress-text">Ready</span>
+          </div>
+
+          <div class="log-container">
+            <div id="log-output" class="log-output">
+              <div class="log-entry info">Waiting for files...</div>
+            </div>
+          </div>
+
+          <div id="result-area" class="result-area hidden">
+            <a id="download-link" class="btn success" download>Download Concatenated File</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content: Re-pager -->
+      <div id="tab-repage" class="tab-content">
+        <!-- Left Pane: Input & Settings -->
+        <div class="pane left-pane">
+          <header>
+            <h1>MD Re-pager</h1>
+            <p>Renumber "## Page X" markers sequentially</p>
+          </header>
+
+          <div id="repage-drop-zone" class="drop-zone">
+            <p>Drop ONE MD file here or click to select</p>
+            <input type="file" id="repage-file-input" accept=".md,.txt,.markdown" hidden>
+          </div>
+
+          <div id="repage-file-info" class="file-info hidden">
+            <div class="info-row">
+              <span class="label">File:</span>
+              <span id="repage-filename" class="value">filename.md</span>
+            </div>
+            <div class="info-row">
+              <span class="label">Page Range:</span>
+              <span id="repage-range" class="value">Scanning...</span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="start-page-input">New lowest page number for page number changes</label>
+            <input type="number" id="start-page-input" class="input-field" placeholder="e.g. 1" min="0">
+          </div>
+
+          <div class="actions">
+            <button id="repage-clear-btn" class="btn secondary">Clear</button>
+            <button id="repage-btn" class="btn primary" disabled>Proceed Repage</button>
+          </div>
+        </div>
+
+        <!-- Right Pane: Output & Logs -->
+        <div class="pane right-pane">
+          <header>
+            <h2>Repage Output</h2>
+          </header>
+
+          <div class="log-container">
+            <div id="repage-log-output" class="log-output">
+              <div class="log-entry info">Waiting for file...</div>
+            </div>
+          </div>
+
+          <div id="repage-result-area" class="result-area hidden">
+            <a id="repage-download-link" class="btn success" download>Download Repaged File</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
