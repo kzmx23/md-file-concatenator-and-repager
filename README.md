@@ -19,25 +19,70 @@ This tool helps manage large PDF to Markdown conversions where page numbering ne
     ```
 
 2.  **Install dependencies**:
+
+    **On Windows:**
     ```bash
+    npm install
+    ```
+
+    **On Linux/WSL:**
+    ```bash
+    # First time setup - install Node.js via NVM
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+    source ~/.bashrc
+    nvm install --lts
+
+    # Install dependencies
     npm install
     ```
 
 ## Usage
 
 1.  **Start the application**:
+
+    **On Windows:**
     ```bash
+    npm run dev
+    ```
+
+    **On Linux/WSL:**
+    ```bash
+    ./dev-linux.sh
+    ```
+
+    Or manually:
+    ```bash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     npm run dev
     ```
 
 2.  **Open in Browser**:
     Open your browser and navigate to the URL shown in the terminal (usually `http://localhost:5173`).
 
-3.  **Concatenate Files**:
-    - Drag and drop your Markdown files into the left pane.
-    - Reorder them as needed.
-    - Click "Process" to re-page and concatenate them.
-    - Download the result.
+3.  **Use the Tool**:
+
+    **Concatenator Tab:**
+    - Drag and drop your Markdown files into the drop zone
+    - Reorder files by dragging them up/down in the list
+    - The file list is scrollable when you have many files
+    - Action buttons ("Clear All" and "Concatenate Files") stay visible at the bottom
+    - Click "Concatenate Files" to merge all files
+    - Download the concatenated result
+
+    **Re-pager Tab:**
+    - Drop a single Markdown file to renumber its page markers
+    - Enter the new starting page number
+    - Click "Proceed Repage" to process
+    - Download the repaged file
+
+## Features
+
+- **Scrollable File List**: Handle 50+ files with ease - the list scrolls while keeping buttons visible
+- **Sticky Action Buttons**: Buttons always visible at the bottom, even with long file lists
+- **Drag & Drop Reordering**: Easily reorder files to control concatenation sequence
+- **Cross-Platform**: Works on both Windows and Linux/WSL
+- **Real-time Progress**: Visual progress bar and detailed logging
 
 ## Screenshot
 

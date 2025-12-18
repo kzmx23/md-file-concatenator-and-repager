@@ -97,8 +97,10 @@ body {
   flex-direction: column;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   min-width: 0;
+  min-height: 0;
   height: 100%;
-  /* Fill tab content height */
+  overflow: hidden;
+  /* Fill tab content height and constrain children */
 }
 
 header {
@@ -135,11 +137,15 @@ p {
 }
 
 .file-list {
-  flex: 1;
+  flex: 1 1 auto;
   overflow-y: auto;
+  overflow-x: hidden;
   list-style: none;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   padding-right: 0.5rem;
+  min-height: 0;
+  max-height: 100%;
+  /* Allows list to shrink and scroll within available space */
 }
 
 .file-item {
@@ -249,8 +255,16 @@ p {
 .actions {
   display: flex;
   gap: 1rem;
+  position: sticky;
+  bottom: 0;
+  background: var(--pane-bg);
+  backdrop-filter: blur(12px);
+  padding-top: 1rem;
   margin-top: auto;
-  /* Push to bottom */
+  z-index: 10;
+  /* Ensures buttons stay above scrolling content */
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .btn {
